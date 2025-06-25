@@ -1,0 +1,93 @@
+@use "../abstracts/variables" as variable;
+
+@keyframes show-content {
+    0% {
+        opacity: 0;
+    };
+    100% {
+        opacity: 1;
+    };
+};
+
+@keyframes dont-show-content {
+    0% {
+        opacity: 1;
+    };
+    100% {
+        opacity: 0;
+    };
+};
+
+@keyframes clockworks {
+    0% {
+        transform: translateX();
+    };
+    60% {
+        transform: translateX();
+        transform: translateY();
+    };
+    100% {
+        transform: translateX();
+        transform: translateY();
+    };
+};
+
+#header {
+    display: flex;
+    justify-content: center;
+    .header {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        padding: 3px 0;
+        background-color: variable.$color-slate-grey;
+
+        .logo-container {
+            width: 7%;
+            .logo {
+                transform: translateX();
+            }
+        }
+        .list-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 3rem;
+
+            .left-list {
+                display: flex;
+                justify-content: space-between;
+                gap: 1rem;
+            }
+            .center-list {
+                display: flex;
+                justify-content: space-between;
+                gap: 1rem;
+            }
+            .right-list {
+                display: flex;
+                justify-content: space-between;
+                gap: 1rem;
+            }
+        }
+    }
+}
+
+@media screen and (min-width:1921px) {  
+    header {
+        
+    }
+}
+
+@media screen and (max-width:1250px) {  
+    header {
+        
+    }
+}
+
+@media screen and (max-width:768px) {  
+    header {
+        
+    }
+}

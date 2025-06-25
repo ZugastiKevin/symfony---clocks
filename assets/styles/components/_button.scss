@@ -1,0 +1,13 @@
+@use "../abstracts/variables" as variable;
+
+.nav-btn {
+    color: variable.$color-anitque-gold;
+    padding: 0.5rem 1rem;
+    border: 2px solid variable.$color-anitque-gold;
+    border-radius: 1rem;
+    transition: background-color 0.2s ease-out;
+}
+
+.nav-btn:hover {
+    background-color: variable.$color-aged-cream;
+}

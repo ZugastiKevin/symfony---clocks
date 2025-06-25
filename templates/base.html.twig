@@ -3,15 +3,51 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
         {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
         {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
     <body>
+        <header id="header">
+            <nav class="header">
+                <div class="logo-container">
+                    <a href="{{ path('home') }}"><img class="logo" src="{{ asset('assets/img/logo/logo.png') }}" alt="logo"></a>
+                </div>
+                <ul class="list-container">
+                    <div class="left-list">
+                        <li><a class="nav-btn" href="{{ path('home')}}">Les Horloges</a></li>
+                        <li><a class="nav-btn" href="{{ path('home')}}">Contact</a></li>
+                    </div>
+                    <div class="right-list">
+                        {% if app.user %}
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <div class="center-list">
+                                    <li><a class="nav-btn" href="{{ path('admin') }}">Admin</a></li>
+                                </div>
+                            {% endif %}
+                            <li><a class="nav-btn" href="{{ path('app_logout') }}">Se déconnecter</a></li>
+                        {% else %}
+                            <li><a class="nav-btn" href="{{ path('create_user') }}">Rejoindre l'horlogerie</a></li>
+                            <li><a class="nav-btn" href="{{ path('app_login') }}">Se connecter</a></li>
+                        {% endif %}
+                    </div>
+                    
+                    {% if is_granted('ROLE_USER') %}
+                        <li><a class="nav-btn" href="{{path('create_ice_cream')}}">Rajoutez une horloge</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
         {% block body %}{% endblock %}
     </body>
 </html>
