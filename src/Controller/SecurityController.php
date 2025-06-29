@@ -28,7 +28,7 @@ class SecurityController extends AbstractController
     public function addUser(?User $user, Request $request, UserRepository $repository, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordEncoder): Response
     {
         if (!$user) {
-            $user = new User();
+            $user = new User;
         }
 
         $form = $this->createForm(UserTypeForm::class, $user);

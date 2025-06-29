@@ -1,0 +1,65 @@
+
+<svg width="300" height="500" viewBox="0 0 300 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Corps de la pendule style cartel -->
+  <path d="M150,10 
+           C130,50 100,90 110,150 
+           C90,180 90,220 110,250 
+           C100,310 130,350 150,390 
+           C170,350 200,310 190,250 
+           C210,220 210,180 190,150 
+           C200,90 170,50 150,10 Z"
+        fill="#f0e6d6" stroke="#4b392b" stroke-width="4" />
+
+  <!-- Encadrement doré -->
+  <path d="M150,30 
+           C135,60 110,100 120,150 
+           C105,180 105,220 120,250 
+           C110,300 135,340 150,370 
+           C165,340 190,300 180,250 
+           C195,220 195,180 180,150 
+           C190,100 165,60 150,30 Z"
+        fill="none" stroke="#bfa46f" stroke-width="6" />
+
+  <!-- Cadran -->
+  <circle cx="150" cy="200" r="80" fill="#fffaf0" stroke="#4b392b" stroke-width="4"/>
+  <circle cx="150" cy="200" r="70" fill="none" stroke="#bfa46f" stroke-width="4" stroke-dasharray="6,6"/>
+
+  <!-- Marques -->
+  <g stroke="#4b392b" stroke-width="4">
+    <line x1="150" y1="125" x2="150" y2="135"/>
+    <line x1="150" y1="265" x2="150" y2="255"/>
+    <line x1="85" y1="200" x2="95" y2="200"/>
+    <line x1="215" y1="200" x2="205" y2="200"/>
+  </g>
+
+  <!-- Aiguille des heures -->
+  <line id="hour" x1="150" y1="200" x2="120" y2="200" stroke="#4b392b" stroke-width="6" stroke-linecap="round"
+        transform-origin="150 200" />
+
+  <!-- Aiguille des minutes -->
+  <line id="minute" x1="150" y1="200" x2="150" y2="130" stroke="#4b392b" stroke-width="3" stroke-linecap="round"
+        transform-origin="150 200" />
+
+  <!-- Centre -->
+  <circle cx="150" cy="200" r="5" fill="#4b392b" />
+
+  <!-- Animation -->
+  <style>
+    #minute {
+      animation: rotateMinute 10s linear infinite;
+    }
+    #hour {
+      animation: rotateHour 60s linear infinite;
+    }
+
+    @keyframes rotateMinute {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes rotateHour {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</svg>

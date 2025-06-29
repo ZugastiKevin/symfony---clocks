@@ -1,12 +1,151 @@
 @use "../abstracts/variables" as variable;
 
+@mixin center($position: absolute) {
+  position: $position;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 main {
-    
+    #home {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 100%;
+        margin-top: 0;
+
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 45vh;
+            overflow: hidden;
+
+            #background-video {
+                @include center();
+                width: 100%;
+                height: 45vh;
+                object-fit: cover;
+                z-index: -1;
+            }
+
+            .overlay {
+                @include center();
+                width: 100%;
+                height: 45vh;
+                background: variable.$color-overlay;
+                z-index: 0;
+            }
+
+            .hero-content {
+                @include center();
+                text-align: center;
+                color: variable.$color-aged-cream;
+                z-index: 1;
+            }
+        }
+
+        .cards-container {
+            width: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 2rem;
+
+            .card {
+                width: 45%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                gap: 1rem;
+
+                padding: 1rem;
+                background-color: #f4f4f4;
+                border-radius: 1rem;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease;
+
+                a {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: center;
+                    gap: 1rem;
+
+                    .card-title {
+                        
+                    }
+                    .card-content {
+                        flex: 1;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        align-items: center;
+                        gap: 1rem;
+
+                        .card-img-container {
+                            width: 100%;
+                            height: 200px;
+                            overflow: hidden;
+                        }
+                    }
+                }
+
+                .card-option {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    gap: 1rem;
+                }
+            }
+
+            .card:hover {
+                transform: translateY(-5px);
+            }
+        }
+    }
 }
 
 @media screen and (min-width:1921px) {  
     main {
-        
+        #home {
+
+            .banner {
+                width: 60%;
+            }
+
+            .cards-container {
+                width: 60%;
+
+                .card {
+
+                    a {
+                        .card-title {
+                            
+                        }
+                        .card-content {
+                                
+
+                            .card-img-container {
+                                    
+                            }
+                        }
+                    }
+
+                    .card-option {
+                            
+                    }
+                }
+
+                .card:hover {
+                        
+                }
+            }
+        }
     }
 }
 
@@ -18,6 +157,12 @@ main {
 
 @media screen and (max-width:768px) {  
     main {
-        
+        #home {
+            .cards-container {
+                .card {
+                    width: 100%;
+                }
+            }
+        }
     }
 }

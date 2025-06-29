@@ -1,18 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}{{ userUpdateForm ? 'Modification du compte' :  'Creation de compte' }}{% endblock %}
 
 {% block body %}
-    <form method="post">
-        {% if error %}
-            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
-
         <h1> {{ userUpdateForm ? 'Modifier vos informations' :  'Ajouter vos informations' }}</h1>
 
         {{form_start(userCreateForm)}}
             {{form_widget(userCreateForm)}}
-            <input"{{ userUpdateForm ? 'Modifier' :  'Validez' }}">
+            <input type="submit" value="{{ userUpdateForm ? 'Modifier' :  'Validez' }}">
         {{form_end(userCreateForm)}}
-    </form>
 {% endblock %}

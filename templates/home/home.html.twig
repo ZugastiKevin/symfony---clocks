@@ -3,4 +3,46 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
+    <section id="home">
+        <div class="hero">
+            <video autoplay muted loop id="background-video">
+                <source src="{{ asset('video/clock.mp4') }}" type="video/mp4">
+                Votre navigateur ne supporte pas la lecture de vidéos.
+            </video>
+            <div class="overlay"></div>
+            <div class="hero-content">
+                <h1>"Bienvenue sur l'Horlogerie Passionnée – Le temple des collectionneurs d'horloges et pendules rares !"</h1>
+                <p>Que vous soyez un passionné d'horlogerie ou un collectionneur en quête de pièces uniques, notre site est votre destination idéale. Découvrez une collection exceptionnelle de modèles anciens, de pièces de collection, et d'horloges de toutes époques, soigneusement sélectionnées pour leur histoire et leur beauté intemporelle. Explorez nos différents styles – des pendules classiques aux horloges mécaniques en passant par des modèles modernes au design vintage. Que vous soyez à la recherche de votre prochaine acquisition ou que vous souhaitiez simplement en savoir plus sur l'art de collectionner ces merveilles du temps, vous trouverez ici une communauté de passionnés prête à partager son expertise. Rejoignez-nous et faites revivre la magie des horloges !</p>
+            </div>
+        </div>
+        <div class="cards-container home">
+            {% for clock in clocks %}
+                <div class="card">
+                    <a href="{{ path('clock',{'id' : clock.id}) }}">
+                        <div class="card-title">
+                            <h2>{{ clock.name }}</h2>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-img-container">
+                                <img src="{{ asset('images/upload/'~ clock.imageName) }}" alt="photo de l'horloge / pendule">
+                            </div>
+                            <div>
+                                <h3>{{  clock.subTypeClocks.typeClocks.label ~ ', ' ~ clock.subTypeClocks.label }}</h3>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="card-option">
+                        {% if app.user and app.user.id == clock.user.id %}
+                            <a href="{{ path('update_clock',{'id' : clock.id}) }}">Modifier</a>
+                            <form method="POST" onsubmit="return confirm('Confirmer la suppression?')" action="{{ path('delete_clock', {'id': clock.id}) }}">
+                                <input type="hidden" name="_method" value="delete">
+                                <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ clock.id) }}">
+                                <input type="submit" value="Supprimer">
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
 {% endblock %}

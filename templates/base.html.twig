@@ -18,10 +18,15 @@
         {% endblock %}
     </head>
     <body>
+        <div id="loader">
+            <div class="lottie-container">
+                <lottie-player src="{{ asset('animation/Animation_clock.json')}}" background="transparent" speed="1" loop autoplay></lottie-player>
+            </div>
+        </div>
         <header id="header">
             <nav class="header">
                 <div class="logo-container">
-                    <a href="{{ path('home') }}"><img class="logo" src="{{ asset('assets/img/logo/logo.png') }}" alt="logo"></a>
+                    <a href="{{ path('home') }}"><img class="logo" src="{{ asset('images/logo/clock.svg') }}" alt="logo"></a>
                 </div>
                 <ul class="list-container">
                     <div class="left-list">
@@ -43,11 +48,13 @@
                     </div>
                     
                     {% if is_granted('ROLE_USER') %}
-                        <li><a class="nav-btn" href="{{path('create_ice_cream')}}">Rajoutez une horloge</a></li>
+                        <li><a class="nav-btn" href="{{path('create_clock')}}">Rajoutez une horloge</a></li>
                     {% endif %}
                 </ul>
             </nav>
         </header>
-        {% block body %}{% endblock %}
+        <main>
+            {% block body %}{% endblock %}
+        </main>
     </body>
 </html>
