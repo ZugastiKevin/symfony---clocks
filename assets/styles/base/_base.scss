@@ -4,14 +4,13 @@
     box-sizing: border-box;
 }
 
-
-
 body {
     position: relative;
     margin: 0px auto;
     font-family: variable.$font-playfair;
     background: #F4F4F4;
     background: linear-gradient(0deg,rgba(244, 244, 244, 1) 0%, rgba(244, 244, 244, 1) 60%, rgba(17, 17, 17, 1) 100%);
+    background-repeat: no-repeat;
     color: variable.$color-text;
 }
 
