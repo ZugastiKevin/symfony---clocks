@@ -25,6 +25,7 @@
         </div>
         <header id="header">
             <nav class="header">
+                <input type="checkbox" id="burger-toggle" class="burger-toggle" hidden />
                 <div class="logo-container">
                     <a href="{{ path('home') }}"><img class="logo" src="{{ asset('images/logo/clock.svg') }}" alt="logo"></a>
                 </div>
@@ -55,8 +56,6 @@
                     {% endif %}
                 </ul>
                 <input type="checkbox" id="burger-toggle" class="burger-toggle" hidden />
-
-                <!-- Icône burger (label = bouton) -->
                 <label for="burger-toggle" class="burger">
                     <span></span>
                     <span></span>

@@ -1,23 +1,5 @@
 @use "../abstracts/variables" as variable;
 
-@keyframes show-content {
-    0% {
-        opacity: 0;
-    };
-    100% {
-        opacity: 1;
-    };
-}
-
-@keyframes dont-show-content {
-    0% {
-        opacity: 1;
-    };
-    100% {
-        opacity: 0;
-    };
-}
-
 #header {
     position: fixed;
     top: 0;
@@ -51,20 +33,15 @@
             justify-content: space-between;
             gap: 3rem;
 
-            .left-list {
+            .left-list,.center-list, .right-list {
                 display: flex;
                 justify-content: space-between;
                 gap: 1rem;
             }
-            .center-list {
-                display: flex;
-                justify-content: space-between;
-                gap: 1rem;
-            }
-            .right-list {
-                display: flex;
-                justify-content: space-between;
-                gap: 1rem;
+            .left-list +.center-list + .right-list, li .nav-btn {
+                border-top: none;
+                border-top-right-radius: 0;
+                border-top-left-radius: 0;
             }
         }
         .burger-toggle {
@@ -91,7 +68,7 @@
             display: none;
         }
         .burger-toggle:checked + .burger + .burger-container {
-            display: flex;
+            display: none;
         }
     }
 }
@@ -132,40 +109,60 @@
             .burger-container {
                 position: absolute;
                 top: -8px;
-                right: 40px;
+                right: 0%;
+                width: 85%;
                 display: none;
-                justify-content: space-between;
-                gap: 3rem;
+                justify-content: space-evenly;
+                gap: 1rem;
 
-                .burger-left-list {
+                .burger-left-list, .burger-center-list, .burger-right-list {
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
                     align-items: center;
-                    gap: 1rem;
+                    gap: 1.1rem;
                 }
-                .burger-center-list {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    align-items: center;
-                    gap: 1rem;
-                }
-                .burger-center-list li .nav-btn {
-                    border: 2px solid variable.$color-anitque-gold;
-                }
-                .burger-center-list li:first-child .nav-btn {
-                    border: 2px solid variable.$color-anitque-gold;
+                .burger-left-list + .burger-center-list + .burger-right-list, li:first-child .nav-btn {
                     border-top: none;
                     border-top-right-radius: 0;
                     border-top-left-radius: 0;
                 }
-                .burger-right-list {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    align-items: center;
-                    gap: 1rem;
+            }
+            .burger-toggle:checked + .burger + .burger-container {
+                display: flex;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:525px) {
+    #header {
+        .header {
+            .burger {
+                right: 10px;
+            }
+            .burger-container {
+                width: 100%;
+            }
+            .burger-toggle:checked + .burger + .burger-container {
+                display: flex;
+            }
+            .burger-toggle:checked ~ .logo-container {
+                display: none;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:453px) {
+    #header {
+        .header {
+            .burger-container {
+                font-size: 0.8rem;
+                justify-content: center;
+                gap: inherit;
+                .burger-left-list, .burger-center-list, .burger-right-list {
+                    gap: 1.2rem;
                 }
             }
         }
