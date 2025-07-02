@@ -4,10 +4,15 @@
     box-sizing: border-box;
 }
 
+
+
 body {
+    position: relative;
     margin: 0px auto;
     font-family: variable.$font-playfair;
-    background-color: variable.$color-aged-cream;
+    background: #F4F4F4;
+    background: linear-gradient(0deg,rgba(244, 244, 244, 1) 0%, rgba(244, 244, 244, 1) 60%, rgba(17, 17, 17, 1) 100%);
+    color: variable.$color-text;
 }
 
 section {
@@ -18,11 +23,13 @@ img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
 }
 
 h1, h2, h3 {
     margin: 0;
     font-family: variable.$font-bodoni;
+    color: variable.$color-text;
 }
 
 ul {
@@ -50,4 +57,8 @@ a {
 .lottie-container {
     width: 150px;
     height: 150px;
+}
+
+@media screen and (max-width:768px) {
+    
 }

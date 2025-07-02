@@ -26,8 +26,15 @@
                             <div class="card-img-container">
                                 <img src="{{ asset('images/upload/'~ clock.imageName) }}" alt="photo de l'horloge / pendule">
                             </div>
-                            <div>
-                                <h3>{{  clock.subTypeClocks.typeClocks.label ~ ', ' ~ clock.subTypeClocks.label }}</h3>
+                            <div class="card-type">
+                                <h3 class="first-type">{{  clock.subTypeClocks.typeClocks.label ~ ', ' ~ clock.subTypeClocks.label }}</h3>
+                                {% if clock.subTypeClocks.label == 'Comtoise' or 'Neuchâteloise' %}
+                                    {% if clock.subTypeClocks.label == 'Comtoise' %}
+                                        <h3 class="subing-type">dit de parquet</h3>
+                                    {% elseif clock.subTypeClocks.label == 'Neuchâteloise' %}
+                                        <h3 class="subing-type">dit de cheminée</h3>
+                                    {% endif %}
+                                {% endif %}
                             </div>
                         </div>
                     </a>

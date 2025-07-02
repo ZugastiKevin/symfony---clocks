@@ -31,14 +31,16 @@
                 <ul class="list-container">
                     <div class="left-list">
                         <li><a class="nav-btn" href="{{ path('home')}}">Les Horloges</a></li>
-                        <li><a class="nav-btn" href="{{ path('home')}}">Contact</a></li>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            
+                        {% else %}
+                            <li><a class="nav-btn" href="{{ path('home')}}">Contact</a></li>
+                        {% endif %}
                     </div>
-                    <div class="right-list">
+                    <div class="center-list">
                         {% if app.user %}
                             {% if is_granted('ROLE_ADMIN') %}
-                                <div class="center-list">
-                                    <li><a class="nav-btn" href="{{ path('admin') }}">Admin</a></li>
-                                </div>
+                                <li><a class="nav-btn" href="{{ path('home') }}">Admin</a></li>
                             {% endif %}
                             <li><a class="nav-btn" href="{{ path('app_logout') }}">Se déconnecter</a></li>
                         {% else %}
@@ -46,9 +48,44 @@
                             <li><a class="nav-btn" href="{{ path('app_login') }}">Se connecter</a></li>
                         {% endif %}
                     </div>
-                    
                     {% if is_granted('ROLE_USER') %}
-                        <li><a class="nav-btn" href="{{path('create_clock')}}">Rajoutez une horloge</a></li>
+                        <div class="right-list">
+                            <li><a class="nav-btn" href="{{path('create_clock')}}">Rajoutez une horloge</a></li>
+                        </div>
+                    {% endif %}
+                </ul>
+                <input type="checkbox" id="burger-toggle" class="burger-toggle" hidden />
+
+                <!-- Icône burger (label = bouton) -->
+                <label for="burger-toggle" class="burger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+                <ul class="burger-container">
+                    <div class="burger-left-list">
+                        <li><a class="nav-btn" href="{{ path('home')}}">Les Horloges</a></li>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            
+                        {% else %}
+                            <li><a class="nav-btn" href="{{ path('home')}}">Contact</a></li>
+                        {% endif %}
+                    </div>
+                    <div class="burger-center-list">
+                        {% if app.user %}
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <li><a class="nav-btn" href="{{ path('home') }}">Admin</a></li>
+                            {% endif %}
+                            <li><a class="nav-btn" href="{{ path('app_logout') }}">Se déconnecter</a></li>
+                        {% else %}
+                            <li><a class="nav-btn" href="{{ path('create_user') }}">Rejoindre l'horlogerie</a></li>
+                            <li><a class="nav-btn" href="{{ path('app_login') }}">Se connecter</a></li>
+                        {% endif %}
+                    </div>
+                    {% if is_granted('ROLE_USER') %}
+                        <div class="burger-right-list">
+                            <li><a class="nav-btn" href="{{path('create_clock')}}">Rajoutez une horloge</a></li>
+                        </div>
                     {% endif %}
                 </ul>
             </nav>

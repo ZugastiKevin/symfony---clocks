@@ -1,20 +1,16 @@
 @use "../abstracts/variables" as variable;
 
 @mixin button-style($bg-color, $text-color) {
-  padding: 0.5rem 1rem;
-  background-color: $bg-color;
-  color: $text-color;
-  border-radius: 1rem;
-  border: none;
-  transition: all 0.2s ease-out;
+    padding: 0.5rem 1rem;
+    background-color: $bg-color;
+    color: $text-color;
+    border-radius: 1rem;
+    border: none;
+    transition: all 0.2s ease-out;
 }
 
 .nav-btn {
     @include button-style(transparent, variable.$color-anitque-gold);
-    border: 2px solid variable.$color-anitque-gold;
-    border-top: none;
-    border-top-right-radius: 0;
-    border-top-left-radius: 0;
 }
 
 .nav-btn:hover {
