@@ -51,6 +51,7 @@
                 </div>
             {% endfor %}
         </div>
-        <h3>{{ date }}</h3>
+        <h3>{{ percent.result }}</h3>
+        <h3>{{ money.originalAmount ~ ' ' ~ money.fromCurrency ~ ' => ' ~ money.toCurrency ~ ' = ' ~ money.convertedAmount ~ ' (taux: ' ~ money.rateUsed ~ ')' }}</h3>
     </section>
 {% endblock %}
