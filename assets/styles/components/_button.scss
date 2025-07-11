@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use "../abstracts/variables" as variable;
 
 @mixin button-style($bg-color, $text-color) {
@@ -10,12 +11,27 @@
 }
 
 .nav-btn {
-    @include button-style(transparent, variable.$color-anitque-gold);
-    border: 2px solid variable.$color-anitque-gold;
+    @include button-style(transparent, variable.$color-antique-gold);
+    border: 2px solid variable.$color-antique-gold;
 }
 
 .nav-btn:hover {
     background-color: variable.$color-slate-grey;
+}
+
+button, .button {
+    padding: 0.75rem 1.5rem;
+    background-color: variable.$color-antique-gold;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: color.scale(variable.$color-antique-gold, $lightness: -10%);
+    }
 }
 
 @media screen and (max-width:603px) {
