@@ -3,9 +3,8 @@
 {% block title %}{{ userUpdateForm ? 'Modification du compte' :  'Creation de compte' }}{% endblock %}
 
 {% block body %}
-    <section class="security">
+    <section class="form-container">
         <h1> {{ userUpdateForm ? 'Modifier vos informations' :  'Ajouter vos informations' }}</h1>
-
         {{form_start(userCreateForm)}}
             {{form_widget(userCreateForm)}}
             <input type="submit" value="{{ userUpdateForm ? 'Modifier' :  'Validez' }}">
