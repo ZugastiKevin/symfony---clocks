@@ -4,10 +4,12 @@
 
 {% block body %}
     <section class="form-container">
-        <h1> {{ userUpdateForm ? 'Modifier vos informations' :  'Ajouter vos informations' }}</h1>
         {{form_start(userCreateForm)}}
+            <h1> {{ userUpdateForm ? 'Modifier vos informations' :  'Ajouter vos informations' }}</h1>
             {{form_widget(userCreateForm)}}
-            <input type="submit" value="{{ userUpdateForm ? 'Modifier' :  'Validez' }}">
+            <button class="btn btn-lg btn-primary" type="submit">
+                {{ userUpdateForm ? 'Modifier' :  'Validez' }}
+            </button>
         {{form_end(userCreateForm)}}
     </section>
 {% endblock %}

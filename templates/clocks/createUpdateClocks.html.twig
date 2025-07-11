@@ -3,10 +3,13 @@
 {% block title %}{{ clockUpdateForm ? 'Modifier horloge' :  'Creation horloge' }}{% endblock %}
 
 {% block body %}
-    <h1> {{ clockUpdateForm ? 'Modifier votre horloge' :  'Ajouter les informations de votre horloge' }}</h1>
-
-    {{form_start(clockCreateForm)}}
-        {{form_widget(clockCreateForm)}}
-        <input type="submit" value="{{ clockUpdateForm ? 'Modifier' :  'Validez' }}">
-    {{form_end(clockCreateForm)}}
+    <section class="form-container">
+        {{form_start(clockCreateForm)}}
+            <h1> {{ clockUpdateForm ? 'Modifier votre horloge' :  'Ajouter les informations de votre horloge' }}</h1>
+            {{form_widget(clockCreateForm)}}
+            <button class="btn btn-lg btn-primary" type="submit">
+                {{ clockUpdateForm ? 'Modifier' :  'Validez' }}
+            </button>
+        {{form_end(clockCreateForm)}}
+    </section>
 {% endblock %}
