@@ -6,26 +6,38 @@
     <section id="clocks">
         <div class="cards-container home">
             {% for clock in clocks %}
-                <a href="{{ path('clock',{'id' : clock.id}) }}" class="card">
-                    <div class="card-title">
-                        <h2>{{ clock.name }}</h2>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-img-container">
-                            <img src="{{ asset('images/upload/'~ clock.imageName) }}" alt="photo de l'horloge / pendule">
+                <div class="card">
+                    <a href="{{ path('clock',{'id' : clock.id}) }}">
+                        <div class="card-title">
+                            <h2>{{ clock.name }}</h2>
                         </div>
-                    </div>
+                        <div class="card-content">
+                            <div class="card-img-container">
+                                <img src="{{ asset('images/upload/'~ clock.imageName) }}" alt="photo de l'horloge / pendule">
+                            </div>
+                            <div class="card-type">
+                                <h3 class="first-type">{{  clock.subTypeClocks.typeClocks.label ~ ', ' ~ clock.subTypeClocks.label }}</h3>
+                                {% if clock.subTypeClocks.label == 'Comtoise' or 'Neuchâteloise' %}
+                                    {% if clock.subTypeClocks.label == 'Comtoise' %}
+                                        <h3 class="subing-type">dit de parquet</h3>
+                                    {% elseif clock.subTypeClocks.label == 'Neuchâteloise' %}
+                                        <h3 class="subing-type">dit de cheminée</h3>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </a>
                     <div class="card-option">
                         {% if app.user and app.user.id == clock.user.id %}
-                            <a href="{{ path('update_clock',{'id' : clock.id}) }}">Modifier</a>
+                            <a class="button" href="{{ path('update_clock',{'id' : clock.id}) }}">Modifier</a>
                             <form method="POST" onsubmit="return confirm('Confirmer la suppression?')" action="{{ path('delete_clock', {'id': clock.id}) }}">
                                 <input type="hidden" name="_method" value="delete">
                                 <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ clock.id) }}">
-                                <input type="submit" value="Supprimer">
+                                <button class="btn btn-lg btn-primary" type="submit">Supprimer</button>
                             </form>
                         {% endif %}
                     </div>
-                </a>
+                </div>
             {% endfor %}
         </div>
     </section>
