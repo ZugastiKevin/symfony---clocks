@@ -1,0 +1,223 @@
+@use "../abstracts/variables" as variable;
+
+main {
+    #clock {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        margin-bottom: 4rem;
+
+        .card-container {
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            text-align: center;
+
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1000;
+                left: 0;
+                top: 0;
+                width: 100vw;
+                height: 100vh;
+                overflow: auto;
+                background-color: rgba(0, 0, 0, 0.6);
+
+                .modal-content {
+                    background-color: #fff;
+                    color: #000;
+                    margin: 10% auto;
+                    padding: 2rem;
+                    border-radius: 8px;
+                    width: 80%;
+                    max-width: 500px;
+                    position: relative;
+                    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+
+                    .close {
+                    position: absolute;
+                    top: 10px;
+                    right: 15px;
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                    font-weight: bold;
+                    }
+                }
+            }
+
+            .card-title {
+                position: relative;
+                padding: 0 1rem;
+                border-bottom: 2px solid variable.$color-antique-gold;
+                border-radius: 15px;
+
+                h2 {
+                    color: variable.$color-antique-gold;
+                    border-bottom: 2px solid variable.$color-antique-gold;
+                    border-radius: 15px;
+                    margin-bottom: 1rem;
+                }
+
+                .card-type {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .card-discover p {
+                        margin: 0;
+                        padding: 0 0.5rem;
+                        color: variable.$color-aged-cream;
+                        border-left: 1px solid variable.$color-antique-gold;
+                        border-right: 1px solid variable.$color-antique-gold;
+                    }
+
+                    .subing-type {
+                        margin-top: 1rem;
+                        padding: 0 1rem;
+                        border-radius: 10px;
+                        border-bottom: 2px solid variable.$color-antique-gold;
+                    }
+                }
+            }
+            .card-title::after {
+                content: " ";
+                position: absolute;
+                left: 50%;
+                bottom: -1px;
+                width: 100%;
+                height: 2px;
+                padding: 0 2rem;
+                border-bottom: 2px solid variable.$color-antique-gold;
+                transform: translateX(-50%);
+            }
+
+            .card-content {
+                width: 80%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                gap: 1rem;
+
+                .card-img-container {
+                    min-width: 320px;
+                    width: 80%;
+                    overflow: hidden;
+                    max-height: 950px;
+                    border-left: 3px solid;
+                    border-right: 3px solid;
+                    border-radius: 1rem;
+                    border-color: variable.$color-antique-gold;
+                }
+            }
+        }
+
+        .card-option {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+        }
+    }
+}
+
+@media screen and (min-width:1921px) {  
+    main {
+        #clocks {
+            .cards-container {
+                width: 60%;
+
+                .card {
+
+                    a {
+                        .card-title {
+                            
+                        }
+                        .card-content {
+                                
+
+                            .card-img-container {
+                                min-width: 340px;
+                            }
+                        }
+                    }
+
+                    .card-option {
+                            
+                    }
+                }
+
+                .card:hover {
+                        
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:850px) {  
+    main {
+        #clocks {
+            .cards-container {
+                .card {
+
+                    a {
+                        .card-title {
+                            
+                        }
+                        .card-content {
+                                
+
+                            .card-img-container {
+                                min-width: 295px;
+                            }
+
+                            .card-type {
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:768px) {
+    main {
+        #clocks {
+            .cards-container {
+                width: 100%;
+                .card {
+                    width: 100%;
+
+                    a {
+                        .card-title {
+                            
+                        }
+                        .card-content {
+                                
+
+                            .card-img-container {
+                                min-width: none;
+                            }
+
+                            .card-type {
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

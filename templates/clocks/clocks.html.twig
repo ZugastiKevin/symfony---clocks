@@ -13,7 +13,7 @@
                         </div>
                         <div class="card-content">
                             <div class="card-img-container">
-                                <img src="{{ asset('images/upload/'~ clock.imageName) }}" alt="photo de l'horloge / pendule">
+                                <img src="{{ asset('images/upload/'~ clock.imageName) }}" alt="photo de {{ clock.name }}">
                             </div>
                             <div class="card-type">
                                 <h3 class="first-type">{{  clock.subTypeClocks.typeClocks.label ~ ', ' ~ clock.subTypeClocks.label }}</h3>
@@ -29,7 +29,7 @@
                     </a>
                     <div class="card-option">
                         {% if app.user and app.user.id == clock.user.id %}
-                            <a class="button" href="{{ path('update_clock',{'id' : clock.id}) }}">Modifier</a>
+                            <a href="{{ path('update_clock',{'id' : clock.id}) }}"><button class="btn btn-lg btn-primary">Modifier</button></a>
                             <form method="POST" onsubmit="return confirm('Confirmer la suppression?')" action="{{ path('delete_clock', {'id': clock.id}) }}">
                                 <input type="hidden" name="_method" value="delete">
                                 <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ clock.id) }}">

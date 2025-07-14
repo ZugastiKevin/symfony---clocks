@@ -41,7 +41,7 @@
                     <div class="center-list">
                         {% if app.user %}
                             {% if is_granted('ROLE_ADMIN') %}
-                                <li><a class="nav-btn" href="{{ path('home') }}">Admin</a></li>
+                                <li><a class="nav-btn" href="{{ path('admin') }}">Admin</a></li>
                             {% endif %}
                             <li><a class="nav-btn" href="{{ path('app_logout') }}">Se déconnecter</a></li>
                         {% else %}

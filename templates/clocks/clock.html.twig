@@ -1,7 +1,69 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ClocksController!{% endblock %}
+{% block title %}Horloge - {{ clock.name }}{% endblock %}
 
 {% block body %}
-    
+    <section id="clock">
+        <div class="card-container">
+            <div id="customModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p>{{ clock.subTypeClocks.story }}</p>
+                    <p>{{ clock.subTypeClocks.subStory }}</p>
+                </div>
+            </div>
+
+            <div class="card-title">
+                <h2>{{ clock.name }}</h2>
+                <div class="card-type">
+                    <div id="openModal" class="card-discover">
+                        <p class="clock-type">{{ clock.subTypeClocks.typeClocks.label ~ ', ' ~ clock.subTypeClocks.label }}</p>
+                        <p class="discover">en savoir plus</p>
+                    </div>
+                    {% if clock.subTypeClocks.label == 'Comtoise' or 'Neuchâteloise' %}
+                        {% if clock.subTypeClocks.label == 'Comtoise' %}
+                            <h3 class="subing-type">dit de parquet</h3>
+                        {% elseif clock.subTypeClocks.label == 'Neuchâteloise' %}
+                            <h3 class="subing-type">dit de cheminée</h3>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="card-content">
+                {% if clock.imageName %}
+                    <div class="card-img-container">
+                        <img src="{{ asset('images/upload/' ~ clock.imageName) }}" alt="Horloge {{ clock.name }}">
+                    </div>
+                {% endif %}
+
+                {% if clock.describ %}
+                    <div class="card-describ">
+                        <h3>Description</h3>
+                        <p>{{ clock.describ }}</p>
+                    </div>
+                {% endif %}
+
+                {% if clock.price %}
+                    <div class="card-price">
+                        <h3>Prix</h3>
+                        <p>{{ clock.price }} &#8364;</p>
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="card-option">
+                {% if app.user and app.user.id == clock.user.id %}
+                    <a href="{{ path('update_clock',{'id' : clock.id}) }}"><button class="btn btn-lg btn-primary">Modifier</button></a>
+                        <form method="POST" onsubmit="return confirm('Confirmer la suppression?')" action="{{ path('delete_clock', {'id': clock.id}) }}">
+                            <input type="hidden" name="_method" value="delete">
+                            <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ clock.id) }}">
+                            <button class="btn btn-lg btn-primary" type="submit">Supprimer</button>
+                        </form>
+                {% endif %}
+            </div>
+
+            <a href="{{ path('clocks') }}"><button class="btn btn-lg btn-primary">← Retour à la liste</button></a>
+        </div>
+    </section>
 {% endblock %}

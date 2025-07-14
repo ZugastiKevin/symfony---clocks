@@ -11,3 +11,23 @@ import './styles/app.scss';
 import './scripts/loader.js';
 
 console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
+
+
+const modal = document.getElementById('customModal');
+const open = document.getElementById('openModal');
+const close = modal.querySelector('.close');
+
+open.addEventListener('click', () => {
+    modal.style.display = 'block';
+    console.log("test"); 
+});
+
+close.addEventListener('click', () => {
+    modal.style.display = 'none';
+});
+
+window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.style.display = 'none';
+    }
+});
