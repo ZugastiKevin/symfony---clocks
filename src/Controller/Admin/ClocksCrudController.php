@@ -7,6 +7,7 @@ use Vich\UploaderBundle\Form\Type\VichImageType;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -24,6 +25,7 @@ class ClocksCrudController extends AbstractCrudController
         return [
         IdField::new('id')->hideOnForm(),
         TextField::new('name'),
+        NumberField::new('price'),
         TextEditorField::new('describ'),
         AssociationField::new('subTypeClocks')
         ->setFormTypeOptions([
