@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\User;
 use App\Entity\Clocks;
 use App\Entity\Comments;
 use App\Entity\TypeClocks;
@@ -59,6 +60,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Types', 'fas fa-tags', TypeClocks::class);
         yield MenuItem::linkToCrud('Sous-types', 'fas fa-tag', SubTypeClocks::class);
         yield MenuItem::linkToCrud('Commentaires', 'fas fa-comments', Comments::class);
+        yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-users', User::class);
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
 }
