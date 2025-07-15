@@ -39,7 +39,7 @@
                         </div>
                     </a>
                     <div class="card-option">
-                        {% if app.user and app.user.id == clock.user.id %}
+                        {% if app.user and app.user.id == clock.user.id or is_granted('ROLE_ADMIN') %}
                             <a href="{{ path('update_clock',{'id' : clock.id}) }}"><button class="btn btn-lg btn-primary">Modifier</button></a>
                             <form method="POST" onsubmit="return confirm('Confirmer la suppression?')" action="{{ path('delete_clock', {'id': clock.id}) }}">
                                 <input type="hidden" name="_method" value="delete">
